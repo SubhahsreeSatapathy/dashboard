@@ -1,0 +1,14 @@
+.widgetSm{
+    flex: 1;
+   
+}
+.widgetSmList{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.widgetSmListItem{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
