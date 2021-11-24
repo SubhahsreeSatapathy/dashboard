@@ -5,6 +5,7 @@ import { userdata } from "../../dummydata";
 import WidgetSm from "../../components/widgetSm/WidgetSm"
 import "./Home.css"
 import WidgetLg from '../../components/widgetLg/WidgetLg';
+import Footer from "../../components/Footer/Footer"
 
 const Home = () => {
     return (
@@ -21,7 +22,7 @@ const Home = () => {
           <WidgetSm/>
         </div>
         <div className="homeFooter">
-          home footer
+          <Footer/>
         </div>
       </div>
     );
