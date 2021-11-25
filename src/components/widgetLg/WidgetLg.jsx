@@ -43,104 +43,102 @@ export default function WidgetLg() {
   return (
     <>
       <div className="widgetLg">
-        <Slider {...settings} style={{marginRight:"20px"}}>
+        <Slider {...settings} style={{ marginRight: "20px" }}>
           <Card style={{ width: "30" }}>
-            {/* <Card.Img variant="top" src={{cardImg}} /> */}
+            <Card.Img variant="top" src={{}} />
             <Card.Body style={{ width: "200px" }}>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              {/* <Button variant="primary">Go somewhere</Button> */}
             </Card.Body>
-            </Card>
-         
+          </Card>
+
           <Card style={{ width: "30" }}>
-            {/* <Card.Img variant="top" src={{cardImg}} /> */}
+            <Card.Img variant="top" src={{}} />
             <Card.Body style={{ width: "200px" }}>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              {/* <Button variant="primary">Go somewhere</Button> */}
             </Card.Body>
-            </Card>
-         
+          </Card>
+
           <Card style={{ width: "30" }}>
-            {/* <Card.Img variant="top" src={{cardImg}} /> */}
+            <Card.Img variant="top" src={{}} />
             <Card.Body style={{ width: "200px" }}>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              {/* <Button variant="primary">Go somewhere</Button> */}
             </Card.Body>
-            </Card>
-         
+          </Card>
+
           <Card style={{ width: "30" }}>
-            {/* <Card.Img variant="top" src={{cardImg}} /> */}
+            <Card.Img variant="top" src={{}} />
             <Card.Body style={{ width: "200px" }}>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              {/* <Button variant="primary">Go somewhere</Button> */}
             </Card.Body>
-            </Card>
-         
+          </Card>
+
           <Card style={{ width: "30" }}>
-            {/* <Card.Img variant="top" src={{cardImg}} /> */}
+            <Card.Img variant="top" src={{}} />
             <Card.Body style={{ width: "200px" }}>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              {/* <Button variant="primary">Go somewhere</Button> */}
             </Card.Body>
-            </Card>
-         
+          </Card>
+
           <Card style={{ width: "30" }}>
-            {/* <Card.Img variant="top" src={{cardImg}} /> */}
+            <Card.Img variant="top" src={{}} />
             <Card.Body style={{ width: "200px" }}>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              {/* <Button variant="primary">Go somewhere</Button> */}
             </Card.Body>
-            </Card>
-         
+          </Card>
+
           <Card style={{ width: "30" }}>
-            {/* <Card.Img variant="top" src={{cardImg}} /> */}
+            <Card.Img variant="top" src={{}} />
             <Card.Body style={{ width: "200px" }}>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              {/* <Button variant="primary">Go somewhere</Button> */}
             </Card.Body>
-            </Card>
-         
+          </Card>
+
           <Card style={{ width: "30" }}>
-            {/* <Card.Img variant="top" src={{cardImg}} /> */}
+            <Card.Img variant="top" src={{}} />
             <Card.Body style={{ width: "200px" }}>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              {/* <Button variant="primary">Go somewhere</Button> */}
             </Card.Body>
-            </Card>
-         
-         
+          </Card>
         </Slider>
       </div>
     </>

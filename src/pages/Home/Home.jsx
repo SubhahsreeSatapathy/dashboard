@@ -7,6 +7,7 @@ import { useLayoutEffect } from "react";
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import "./Home.css";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
+import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
   const [alldata, setData] = useState([]);
@@ -34,7 +35,9 @@ const Home = () => {
         <WidgetLg />
         <WidgetSm />
       </div>
-      <div className="homeFooter">home footer</div>
+      <div className="homeFooter">
+        <Footer/>
+      </div>
     </div>
   );
 };
