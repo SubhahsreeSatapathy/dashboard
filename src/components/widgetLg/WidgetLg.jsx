@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./WidgetLg.css";
-import { Card,Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 // import {cardImg} from "../../assets/cardImg.svg";
 
 function SampleNextArrow(props) {
@@ -28,10 +28,10 @@ function SamplePrevArrow(props) {
   );
 }
 
-
-export default function WidgetLg() {
+export default function WidgetLg({ alldata }) {
+  console.log(alldata);
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -39,106 +39,26 @@ export default function WidgetLg() {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
- 
+
   return (
     <>
       <div className="widgetLg">
         <Slider {...settings} style={{ marginRight: "20px" }}>
-          <Card style={{ width: "30" }}>
-            <Card.Img variant="top" src={{}} />
-            <Card.Body style={{ width: "200px" }}>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-          </Card>
-
-          <Card style={{ width: "30" }}>
-            <Card.Img variant="top" src={{}} />
-            <Card.Body style={{ width: "200px" }}>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-          </Card>
-
-          <Card style={{ width: "30" }}>
-            <Card.Img variant="top" src={{}} />
-            <Card.Body style={{ width: "200px" }}>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-          </Card>
-
-          <Card style={{ width: "30" }}>
-            <Card.Img variant="top" src={{}} />
-            <Card.Body style={{ width: "200px" }}>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-          </Card>
-
-          <Card style={{ width: "30" }}>
-            <Card.Img variant="top" src={{}} />
-            <Card.Body style={{ width: "200px" }}>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-          </Card>
-
-          <Card style={{ width: "30" }}>
-            <Card.Img variant="top" src={{}} />
-            <Card.Body style={{ width: "200px" }}>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-          </Card>
-
-          <Card style={{ width: "30" }}>
-            <Card.Img variant="top" src={{}} />
-            <Card.Body style={{ width: "200px" }}>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-          </Card>
-
-          <Card style={{ width: "30" }}>
-            <Card.Img variant="top" src={{}} />
-            <Card.Body style={{ width: "200px" }}>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-          </Card>
+          {alldata &&
+            alldata.map((curr, index) => {
+              return (
+                <>
+                  <Card style={{ width: "30", height: "auto" }} key={index}>
+                    <Card.Img variant="top" src={curr.news_image} />
+                    <Card.Body style={{ width: "200px" }}>
+                      <Card.Title>News Title</Card.Title>
+                      <Card.Text>{curr.news_headline}</Card.Text>
+                      {/* <Button variant="primary">Go somewhere</Button> */}
+                    </Card.Body>
+                  </Card>
+                </>
+              );
+            })}
         </Slider>
       </div>
     </>

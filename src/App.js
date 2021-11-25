@@ -1,6 +1,6 @@
 import Sidebar from "./components/Sidebar/Sidebar";
 import Topbar from "./components/Topbar/Topbar";
-import "./App.css"
+import "./App.css";
 import Home from "./pages/Home/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -10,7 +10,7 @@ function App() {
       <Topbar />
       <div className="container">
         <Sidebar />
-        <Home/>
+        <Home />
       </div>
     </div>
   );
