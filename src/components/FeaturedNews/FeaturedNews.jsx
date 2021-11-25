@@ -1,8 +1,15 @@
 import React from "react";
 import "./FeaturedNews.css";
-import { Button, Card, CardActions, CardContent, Typography } from "@material-ui/core";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+} from "@material-ui/core";
 
-export default function FeaturedNews() {
+export default function FeaturedNews({ positive, negative }) {
+  console.log(positive);
   return (
     <div className="featured">
       <div className="featuredItem">
@@ -28,7 +35,7 @@ export default function FeaturedNews() {
                 marginLeft: "1px",
               }}
             >
-              2500+
+              {positive + negative}
             </Typography>
             <Typography variant="body2" component="p"></Typography>
           </CardContent>
@@ -62,7 +69,7 @@ export default function FeaturedNews() {
                 marginLeft: "1px",
               }}
             >
-              1200+
+              {negative}
             </Typography>
             <Typography variant="body2" component="p"></Typography>
           </CardContent>
@@ -96,7 +103,7 @@ export default function FeaturedNews() {
                 marginLeft: "1px",
               }}
             >
-              1300+
+              {positive}
             </Typography>
             <Typography variant="body2" component="p"></Typography>
           </CardContent>
