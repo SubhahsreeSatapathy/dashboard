@@ -9,7 +9,6 @@ import {
 } from "@material-ui/core";
 
 export default function FeaturedNews({ positive, negative }) {
-  console.log(positive);
   return (
     <div className="featured">
       <div className="featuredItem">

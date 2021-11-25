@@ -1,14 +1,19 @@
-.widgetSm{
-    flex: 1;
-   
+.widgetSm {
+  flex: 1;
 }
-.widgetSmList{
-    padding: 0;
-    margin: 0;
-    list-style: none;
+.widgetSmList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
-.widgetSmListItem{
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0px;
+.widgetSmListItem {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+.widgetSm .WordCloud svg {
+  border-radius: 50%;
+  height: 300px;
+  margin-left: 10px;
+  margin-top: 20px;
 }

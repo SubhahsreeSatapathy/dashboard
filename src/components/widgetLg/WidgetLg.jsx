@@ -48,7 +48,7 @@ export default function WidgetLg({ alldata }) {
             alldata.map((curr, index) => {
               return (
                 <>
-                  <Card style={{ width: "30", height: "auto" }} key={index}>
+                  <Card style={{ width: "30", height: "350px" }} key={index}>
                     <Card.Img variant="top" src={curr.news_image} />
                     <Card.Body style={{ width: "200px" }}>
                       <Card.Title>News Title</Card.Title>
