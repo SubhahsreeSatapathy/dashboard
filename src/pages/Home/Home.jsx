@@ -21,6 +21,10 @@ const Home = () => {
         setData(data);
         console.log(alldata);
       });
+    const positiveData = alldata.filter((item) => item.label === "POSITIVE");
+    console.log("length of positive data", positiveData.length);
+    const negativeData = alldata.filter((item) => item.label === "NEGATIVE");
+    console.log("length of negative data", negativeData.length);
   }, []);
   return (
     <div className="home">
