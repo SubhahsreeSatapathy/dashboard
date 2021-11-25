@@ -1,23 +1,40 @@
-import React from "react";
-import Chart from "../../components/charts/Chart";
-import FeaturedNews from "../../components/FeaturedNews/FeaturedNews";
-import { userdata } from "../../dummydata";
-import { useState, useEffect } from "react";
-import { useLayoutEffect } from "react";
-import WidgetSm from "../../components/widgetSm/WidgetSm";
-import "./Home.css";
-import WidgetLg from "../../components/widgetLg/WidgetLg";
-import Footer from "../../components/Footer/Footer";
-import axios from "axios";
+import React from 'react';
+import Chart from '../../components/charts/Chart';
+import FeaturedNews from '../../components/FeaturedNews/FeaturedNews';
+import { userdata } from '../../dummydata';
+import { useState, useEffect, useLayoutEffect } from 'react';
+import WidgetSm from '../../components/widgetSm/WidgetSm';
+import './Home.css';
+import WidgetLg from '../../components/widgetLg/WidgetLg';
+import Footer from '../../components/Footer/Footer';
+import axios from 'axios';
 const Home = () => {
-  const [positive, setPositive] = useState();
-  const [negative, setNegative] = useState();
+  const [positive, setPositive] = useState(0);
+  const [negative, setNegative] = useState(0);
   const [alldata, setData] = useState([]);
-  useLayoutEffect(() => {
-    axios.get("https://newerver.herokuapp.com/allNew").then((response) => {
-      setData(response.data);
-      console.log(alldata);
-    });
+  useEffect(() => {
+    axios
+      .get('https://newerver.herokuapp.com/allNew')
+      .then((response) => {
+        setData(response?.data);
+        console.log('all data ', response);
+
+        let positiveData =
+          response?.data &&
+          !!response?.data.length &&
+          response?.data.filter((item) => item?.label === 'POSITIVE');
+
+        console.log('length of positive data', positiveData);
+        setPositive(positiveData?.length);
+
+        let negativeData =
+          response?.data &&
+          !!response?.data.length &&
+          response?.data.filter((item) => item?.label === 'NEGATIVE');
+        console.log('length of negative data', negativeData);
+        setNegative(negativeData?.length);
+      })
+      .catch((error) => console.log(error.response));
     // const getNew = fetch("https://newerver.herokuapp.com/allNew");
     // getNew
     //   .then((response) => {
@@ -29,22 +46,17 @@ const Home = () => {
 
     //     console.log("All data", alldata);
     //   });
-    const positiveData = alldata.filter((item) => item.label === "POSITIVE");
-    console.log("length of positive data", positiveData.length);
-    setPositive(positiveData.length);
-    const negativeData = alldata.filter((item) => item.label === "NEGATIVE");
-    console.log("length of negative data", negativeData.length);
-    setNegative(negativeData.length);
   }, []);
+
   return (
-    <div className="home">
+    <div className='home'>
       <FeaturedNews positive={positive} negative={negative} />
-      <Chart data={userdata} title=" " grid dataKey="Data" />
-      <div className="homeWidgets">
+      <Chart data={userdata} title=' ' grid dataKey='Data' />
+      <div className='homeWidgets'>
         <WidgetLg alldata={alldata} />
         <WidgetSm />
       </div>
-      <div className="homeFooter">
+      <div className='homeFooter'>
         <Footer alldata={alldata} />
       </div>
     </div>
