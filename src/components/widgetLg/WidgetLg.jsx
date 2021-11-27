@@ -28,8 +28,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default function WidgetLg({ alldata }) {
-  console.log(alldata);
+export default function WidgetLg({ filteredData }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -44,19 +43,21 @@ export default function WidgetLg({ alldata }) {
     <>
       <div className="widgetLg">
         <Slider {...settings} style={{ marginRight: "20px" }}>
-          {alldata &&
-            alldata.map((curr, index) => {
+          {filteredData &&
+            filteredData.map((curr, index) => {
               return (
-                <>
-                  <Card style={{ width: "30", height: "auto" }} key={index}>
-                    <Card.Img variant="top" src={curr.news_image} />
-                    <Card.Body style={{ width: "200px" }}>
-                      <Card.Title>News Title</Card.Title>
-                      <Card.Text>{curr.news_headline}</Card.Text>
-                      {/* <Button variant="primary">Go somewhere</Button> */}
-                    </Card.Body>
-                  </Card>
-                </>
+                <Card className="card" key={index}>
+                  <Card.Img
+                    variant="top"
+                    className="image-card"
+                    src={curr.news_image}
+                  />
+                  <Card.Body style={{ width: "200px", overflowY: "auto" }}>
+                    <Card.Title>News Title</Card.Title>
+                    <Card.Text>{curr.news_headline}</Card.Text>
+                    {/* <Button variant="primary">Go somewhere</Button> */}
+                  </Card.Body>
+                </Card>
               );
             })}
         </Slider>

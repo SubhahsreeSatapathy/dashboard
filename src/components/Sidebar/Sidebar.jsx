@@ -1,11 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sidebar.css";
 
-import { Checkbox, FormControl, FormControlLabel, FormGroup, Radio, RadioGroup } from "@material-ui/core";
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  Radio,
+  RadioGroup,
+} from "@material-ui/core";
 
-
-export default function Sidebar() {
-  
+export default function Sidebar({
+  setSelectedYearData,
+  checkedMonthList,
+  setMonthCheckedList,
+}) {
+  const [monthList, setAllMonths] = useState([
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]);
+  const [dataList, setDataList] = useState([]);
+  const [selectedYear, setSelectedYear] = useState(2021);
+  // const [checkedMonthList, setMonthCheckedList] = useState([]);
+  const [checkedMonth, setMonthChecked] = useState(new Date().getMonth() + 1);
+  const [yearList, setYearList] = useState(
+    Array(new Date().getFullYear() - 2016 + 1)
+      .fill()
+      .map((_, idx) => 2016 + idx)
+      .reverse()
+  );
+  const handleCheckBoxMonth = (e) => {
+    if (parseInt(e.target.value) === 0) {
+      setMonthChecked(parseInt(e.target.value));
+      setMonthCheckedList([0]);
+      return;
+    }
+    if (checkedMonthList.includes(parseInt(e.target.value))) {
+      let filteredArray = checkedMonthList.filter(
+        (item) => item !== parseInt(e.target.value)
+      );
+      setMonthCheckedList(filteredArray);
+      return;
+    }
+    setMonthChecked(parseInt(e.target.value));
+    setMonthCheckedList([
+      ...new Set([...checkedMonthList, parseInt(e.target.value)]),
+    ]);
+    // setMonthCheckedListData([...checkedMonthList]);
+  };
+  const handleRadioYear = (e) => {
+    setSelectedYear(parseInt(e.target.value));
+    setSelectedYearData(parseInt(e.target.value));
+  };
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -17,73 +73,24 @@ export default function Sidebar() {
                 aria-label="gender"
                 defaultValue="female"
                 name="radio-buttons-group"
+                onChange={handleRadioYear}
+                value={selectedYear}
               >
-                <FormControlLabel
-                  value="2016"
-                  control={
-                    <Radio
-                      style={{
-                        color: "#000",
-                      }}
+                {yearList.map((item, index) => {
+                  return (
+                    <FormControlLabel
+                      value={item}
+                      control={
+                        <Radio
+                          style={{
+                            color: "#000",
+                          }}
+                        />
+                      }
+                      label={item}
                     />
-                  }
-                  label="2016"
-                />
-                <FormControlLabel
-                  value="2017"
-                  control={
-                    <Radio
-                      style={{
-                        color: "#000",
-                      }}
-                    />
-                  }
-                  label="2017"
-                />
-                <FormControlLabel
-                  value="2018"
-                  control={
-                    <Radio
-                      style={{
-                        color: "#000",
-                      }}
-                    />
-                  }
-                  label="2018"
-                />
-                <FormControlLabel
-                  value="2019"
-                  control={
-                    <Radio
-                      style={{
-                        color: "#000",
-                      }}
-                    />
-                  }
-                  label="2019"
-                />
-                <FormControlLabel
-                  value="2020"
-                  control={
-                    <Radio
-                      style={{
-                        color: "#000",
-                      }}
-                    />
-                  }
-                  label="2020"
-                />
-                <FormControlLabel
-                  value="2021"
-                  control={
-                    <Radio
-                      style={{
-                        color: "#000",
-                      }}
-                    />
-                  }
-                  label="2021"
-                />
+                  );
+                })}
               </RadioGroup>
             </FormControl>
           </ul>
@@ -95,6 +102,9 @@ export default function Sidebar() {
               <FormControlLabel
                 control={
                   <Checkbox
+                    onChange={handleCheckBoxMonth}
+                    value="0"
+                    checked={checkedMonth === 0}
                     style={{
                       color: "#000",
                     }}
@@ -102,116 +112,28 @@ export default function Sidebar() {
                 }
                 label="Select all"
               />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
+              {monthList.map((item, index) => {
+                return (
+                  <FormControlLabel
+                    key={index}
+                    control={
+                      <Checkbox
+                        checked={
+                          checkedMonth === 0
+                            ? true
+                            : checkedMonthList.includes(index + 1)
+                        }
+                        value={index + 1}
+                        onChange={handleCheckBoxMonth}
+                        style={{
+                          color: "#000",
+                        }}
+                      />
+                    }
+                    label={item}
                   />
-                }
-                label="January"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="February"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="March"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="April"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="May"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="June"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="July"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="August"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="September"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="November"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="December"
-              />
+                );
+              })}
             </FormGroup>
           </ul>
         </div>
@@ -228,26 +150,6 @@ export default function Sidebar() {
                   />
                 }
                 label="Select all"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="Categories"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    style={{
-                      color: "#000",
-                    }}
-                  />
-                }
-                label="Categories"
               />
               <FormControlLabel
                 control={
