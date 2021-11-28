@@ -15,7 +15,7 @@ export default function FeaturedNews({ positive, negative }) {
       <div className='featuredItem'>
         <Card
           style={{
-            width: 200,
+            width: 300,
             backgroundColor: '#5ba5b0',
           }}
         >
@@ -49,7 +49,7 @@ export default function FeaturedNews({ positive, negative }) {
       <div className='featuredItem'>
         <Card
           style={{
-            width: 200,
+            width: 300,
             backgroundColor: '#e85b51',
           }}
         >
@@ -83,7 +83,7 @@ export default function FeaturedNews({ positive, negative }) {
       <div className='featuredItem'>
         <Card
           style={{
-            width: 200,
+            width: 300,
             backgroundColor: '#38a662',
           }}
         >
@@ -104,40 +104,6 @@ export default function FeaturedNews({ positive, negative }) {
               }}
             >
               {positive}
-            </Typography>
-            <Typography variant='body2' component='p'></Typography>
-          </CardContent>
-          <CardActions>
-            <Button size='small' style={{ color: 'white' }}>
-              Learn More
-            </Button>
-          </CardActions>
-        </Card>
-      </div>
-      <div className='featuredItem'>
-        <Card
-          style={{
-            width: 200,
-            backgroundColor: '#f79448',
-          }}
-        >
-          <CardContent>
-            <Typography
-              style={{ fontSize: 14 }}
-              color='textSecondary'
-              gutterBottom
-            ></Typography>
-            <Typography variant='h5' component='h2' style={{ color: 'white' }}>
-              Current
-            </Typography>
-            <Typography
-              style={{
-                marginBottom: 12,
-                color: 'white',
-                marginLeft: '1px',
-              }}
-            >
-              2000+
             </Typography>
             <Typography variant='body2' component='p'></Typography>
           </CardContent>

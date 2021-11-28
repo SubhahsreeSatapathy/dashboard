@@ -1,8 +1,8 @@
 import React from "react";
 import Chart from "../../components/charts/Chart";
 import FeaturedNews from "../../components/FeaturedNews/FeaturedNews";
-import { userdata } from "../../dummydata";
 import { useState, useEffect, useLayoutEffect } from "react";
+import { monthNames } from "../../constants";
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import "./Home.css";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
@@ -10,6 +10,7 @@ import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import Topbar from "../../components/Topbar/Topbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
+
 const Home = () => {
   const [positive, setPositive] = useState(0);
   const [negative, setNegative] = useState(0);
@@ -19,6 +20,7 @@ const Home = () => {
   const [checkedMonthList, setMonthCheckedList] = useState([
     new Date().getMonth() + 1,
   ]);
+  const [charData, setChartData] = useState([]);
 
   useEffect(() => {
     axios
@@ -32,15 +34,39 @@ const Home = () => {
           !!response?.data.length &&
           response?.data.filter((item) => item?.label === "POSITIVE");
 
-        console.log("length of positive data", positiveData);
         setPositive(positiveData?.length);
 
         let negativeData =
           response?.data &&
           !!response?.data.length &&
           response?.data.filter((item) => item?.label === "NEGATIVE");
-        console.log("length of negative data", negativeData);
         setNegative(negativeData?.length);
+
+        const userData = [];
+        const positiveList = [];
+        positiveList.fill(0, 0, 11);
+        const negativeList = [];
+        negativeList.fill(0, 0, 11);
+        let n_count = 0,
+          p_count = 0;
+        response?.data?.forEach((item) => {
+          const getCurrMonthIndex = parseInt(item.created_on.split("-")[1]) - 1;
+          if (item?.label === "POSITIVE") {
+            p_count++;
+            positiveList[getCurrMonthIndex] = p_count;
+          } else {
+            n_count++;
+            negativeList[getCurrMonthIndex] = n_count;
+          }
+        });
+        for (let i = 0; i < 12; i++) {
+          userData.push({
+            name: monthNames[i],
+            positive: positiveList[i] ? positiveList[i] : 0,
+            negative: negativeList[i] ? negativeList[i] : 0,
+          });
+        }
+        setChartData(userData);
       })
       .catch((error) => console.log(error.response));
   }, []);
@@ -49,6 +75,7 @@ const Home = () => {
     const filteredYearData = allData.filter((item) => {
       return parseInt(item.created_on.split("-")[0]) === getSelectedYear;
     });
+    
     setFilterData(filteredYearData);
   }, [allData, getSelectedYear]);
 
@@ -59,7 +86,8 @@ const Home = () => {
     });
     setFilterData(filteredYearData);
   }, [allData, checkedMonthList]);
-  console.log(filteredData);
+
+  console.log(charData);
   return (
     <>
       <Topbar />
@@ -72,13 +100,20 @@ const Home = () => {
 
         <div className="home">
           <FeaturedNews positive={positive} negative={negative} />
-          <Chart data={userdata} title=" " grid dataKey="Data" />
+          <Chart
+            data={charData}
+            title=" "
+            grid
+            dataKey="Data"
+            positive={positive}
+            negative={negative}
+          />
           <div className="homeWidgets">
             <WidgetLg filteredData={filteredData} />
             <WidgetSm />
           </div>
           <div className="homeFooter">
-            <Footer alldata={allData} />
+            <Footer alldata={filteredData} />
           </div>
         </div>
       </div>
