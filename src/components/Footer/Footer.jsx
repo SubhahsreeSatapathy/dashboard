@@ -3,16 +3,26 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import BootstrapTable from "react-bootstrap-table-next";
 
 const Footer = ({ alldata }) => {
+  const myFormatter = (cell, row) => {
+    if (row.entity[0]) {
+      console.log(row);
+      return Object.keys(row.entity[0]);
+    }
+  };
   const columns = [
-    { dataField: "_id", text: "_id" },
-    { dataField: "news_type", text: "News" },
+    { dataField: "news_headline", text: "Headline" },
     { dataField: "label", text: "Sentiment" },
+    {
+      dataField: "entity[0]",
+      text: "entity",
+      formatter: (cell, row) => Object.keys(row.entity[0]),
+    },
   ];
   return (
     <>
       <div>
         <BootstrapTable
-          keyField="_id"
+          keyField="news_headline"
           data={alldata}
           columns={columns}
           pagination={paginationFactory()}
