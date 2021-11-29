@@ -15,6 +15,7 @@ export default function Sidebar({
   checkedMonthList,
   setMonthCheckedList,
 }) {
+  const [categories,setCategories]=useState(["Tech Mahindra","Infosys","Accenture","Wipro","TCS","Infy"]);
   const [monthList, setAllMonths] = useState([
     "January",
     "February",
@@ -151,6 +152,8 @@ export default function Sidebar({
                 }
                 label="Select all"
               />
+               {categories.map((item, index) => {
+                return(
               <FormControlLabel
                 control={
                   <Checkbox
@@ -159,8 +162,8 @@ export default function Sidebar({
                     }}
                   />
                 }
-                label="Categories"
-              />
+                label={item}
+              />)})}
             </FormGroup>
           </ul>
         </div>

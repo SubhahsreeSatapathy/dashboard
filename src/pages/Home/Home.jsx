@@ -75,7 +75,7 @@ const Home = () => {
     const filteredYearData = allData.filter((item) => {
       return parseInt(item.created_on.split("-")[0]) === getSelectedYear;
     });
-    
+
     setFilterData(filteredYearData);
   }, [allData, getSelectedYear]);
 
@@ -115,7 +115,7 @@ const Home = () => {
           <div className="homeFooter">
             <Footer alldata={filteredData} />
           </div>
-        </div>
+        </div> 
       </div>
     </>
   );
