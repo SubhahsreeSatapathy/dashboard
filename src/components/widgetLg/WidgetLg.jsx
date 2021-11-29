@@ -43,7 +43,7 @@ export default function WidgetLg({ filteredData }) {
     <>
       <div className="widgetLg">
         <Slider {...settings} style={{ marginRight: "20px" }}>
-          {filteredData.length !== 0 ?
+          {filteredData.length !== 0 ? (
             filteredData.map((curr, index) => {
               return (
                 <Card className="card" key={index}>
@@ -59,7 +59,10 @@ export default function WidgetLg({ filteredData }) {
                   </Card.Body>
                 </Card>
               );
-            }) : <h1>No Data Available</h1>}
+            })
+          ) : (
+            <h1>No Data Available</h1>
+          )}
         </Slider>
       </div>
     </>

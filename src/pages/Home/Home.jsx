@@ -14,59 +14,23 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 const Home = () => {
   const [positive, setPositive] = useState(0);
   const [negative, setNegative] = useState(0);
-  const [allData, setData] = useState([]);
-  const [filteredData, setFilterData] = useState([]);
-  const [getSelectedYear, setSelectedYear] = useState(2021);
-  const [checkedMonthList, setMonthCheckedList] = useState([
-    new Date().getMonth() + 1,
-  ]);
-  const [charData, setChartData] = useState([]);
-
-  useEffect(() => {
+  const [alldata, setData] = useState([]);
+  useLayoutEffect(() => {
     axios
       .get("https://newerver.herokuapp.com/allNew")
       .then((response) => {
         setData(response?.data);
-        console.log("all data ", response);
-
         let positiveData =
           response?.data &&
           !!response?.data.length &&
           response?.data.filter((item) => item?.label === "POSITIVE");
-
         setPositive(positiveData?.length);
-
+        console.log("length of +ve", positiveData?.length);
         let negativeData =
           response?.data &&
           !!response?.data.length &&
           response?.data.filter((item) => item?.label === "NEGATIVE");
         setNegative(negativeData?.length);
-
-        const userData = [];
-        const positiveList = [];
-        positiveList.fill(0, 0, 11);
-        const negativeList = [];
-        negativeList.fill(0, 0, 11);
-        let n_count = 0,
-          p_count = 0;
-        response?.data?.forEach((item) => {
-          const getCurrMonthIndex = parseInt(item.created_on.split("-")[1]) - 1;
-          if (item?.label === "POSITIVE") {
-            p_count++;
-            positiveList[getCurrMonthIndex] = p_count;
-          } else {
-            n_count++;
-            negativeList[getCurrMonthIndex] = n_count;
-          }
-        });
-        for (let i = 0; i < 12; i++) {
-          userData.push({
-            name: monthNames[i],
-            positive: positiveList[i] ? positiveList[i] : 0,
-            negative: negativeList[i] ? negativeList[i] : 0,
-          });
-        }
-        setChartData(userData);
       })
       .catch((error) => console.log(error.response));
   }, []);
@@ -89,7 +53,17 @@ const Home = () => {
 
   console.log(charData);
   return (
-    <>
+    <div className="home">
+      {console.log(positive)}
+      <FeaturedNews positive={positive} negative={negative} />
+      <Chart data={userdata} title=" " grid dataKey="Data" />
+      <div className="homeWidgets">
+        <WidgetLg alldata={alldata} />
+        <WidgetSm />
+      </div>
+      <div className="homeFooter">
+        <Footer alldata={alldata} />
+      </div>
       <Topbar />
       <div className="container">
         <Sidebar
@@ -117,7 +91,7 @@ const Home = () => {
           </div>
         </div> 
       </div>
-    </>
+    </div>
   );
 };
 

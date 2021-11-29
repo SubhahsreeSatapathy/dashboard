@@ -4,9 +4,7 @@ import "d3-transition";
 import ReactWordcloud from "react-wordcloud";
 import words from "./words";
 
-
 export default function WidgetSm() {
-  
   const options = {
     colors: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"],
     enableTooltip: true,
@@ -22,11 +20,13 @@ export default function WidgetSm() {
     spiral: "archimedean",
     transitionDuration: 1000,
   };
-    
+
   return (
     <div className="widgetSm">
-      <div style={{ height: 250, width: 300, justifyItems:"center" }}>
-        <ReactWordcloud options={options} words={words} />
+      <div
+        style={{ height: "350px", width: "350px", justifyContent: "center" }}
+      >
+        <ReactWordcloud options={options} words={words} className="WordCloud" />
       </div>
     </div>
   );
