@@ -2,17 +2,29 @@
     flex: 1;
     height:calc(100vh-50px);
     background-color: rgb(241, 241, 247);
-    position: sticky;
-    top: 50px;
+    top: 0;
+    bottom: 0;
+    position: relative;
+    width: 300px;
+    
 }
 .sidebarWrapper{
     padding: 10px;
     color:#222;
+    transition: all .3s ease-out;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    position: sticky;
+    top: 64px;
+    bottom: 0;
+
+
 
 }
 .sidebarMenu{
     margin-bottom: 10px;
     width: max-content;
+    -webkit-overflow-scrolling: touch;
 }
 .sidebarTitle{
     font-size: 18px;
