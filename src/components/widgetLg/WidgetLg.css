@@ -7,3 +7,16 @@
     width: 50%;
     
 }
+
+.card{
+    width:400px;
+    height:300px;
+    position: relative;
+    margin-left: 10px;
+    overflow: hidden;
+}
+
+.image-card{
+    width:100%;
+    height: 120px;
+}
