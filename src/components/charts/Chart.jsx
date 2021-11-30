@@ -25,8 +25,8 @@ export default function Chart({ title, data, dataKey, grid,positive,negative }) 
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="positive" fill="#97d17d" />
-            <Bar dataKey="negative" fill="#f55142" />
+            <Bar dataKey="positive" fill="#38a662" />
+            <Bar dataKey="negative" fill="#e85b51" />
           </BarChart>
         </ResponsiveContainer>
       </div>

@@ -38,11 +38,7 @@ export default function FeaturedNews({ positive, negative }) {
             </Typography>
             <Typography variant='body2' component='p'></Typography>
           </CardContent>
-          <CardActions>
-            <Button size='small' style={{ color: 'white' }}>
-              Learn More
-            </Button>
-          </CardActions>
+         
         </Card>
       </div>
       <div className='featuredItem'>
@@ -72,11 +68,7 @@ export default function FeaturedNews({ positive, negative }) {
             </Typography>
             <Typography variant='body2' component='p'></Typography>
           </CardContent>
-          <CardActions>
-            <Button size='small' style={{ color: 'white' }}>
-              Learn More
-            </Button>
-          </CardActions>
+         
         </Card>
       </div>
       <div className='featuredItem'>
@@ -106,11 +98,7 @@ export default function FeaturedNews({ positive, negative }) {
             </Typography>
             <Typography variant='body2' component='p'></Typography>
           </CardContent>
-          <CardActions>
-            <Button size='small' style={{ color: 'white' }}>
-              Learn More
-            </Button>
-          </CardActions>
+        
         </Card>
       </div>
     </div>
