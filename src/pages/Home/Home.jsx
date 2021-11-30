@@ -95,11 +95,12 @@ const Home = () => {
       itemList.push(...Object.values(listItem));
     });
     setCategories([...new Set(itemList)]);
-    // const filteredYearData = allData.filter((item) => {
-    //   if (checkedCategoryList[0] === 'all') return true;
-    //   return checkedCategoryList.some((r) => listItem.includes(r));
-    // });
-    // setFilterData(filteredYearData);
+    const filteredYearData = allData.filter((item) => {
+      const listItem = item?.entity[0];
+      if (checkedCategoryList[0] === "all") return true;
+      return Object.values(listItem).some((r) => checkedCategoryList.includes(r));
+    });
+    setFilterData(filteredYearData);
   }, [allData, checkedCategoryList]);
 
   return (
