@@ -14,15 +14,11 @@ export default function Sidebar({
   setSelectedYearData,
   checkedMonthList,
   setMonthCheckedList,
+  checkedCategoryList,
+  setCheckedCategoryList,
+  categories,
+  setCategories,
 }) {
-  const [categories, setCategories] = useState([
-    "NO.",
-    "DATE",
-    "ORDINAL",
-    "PERSON",
-    "ORG",
-    "GPE",
-  ]);
   const [monthList, setAllMonths] = useState([
     "January",
     "February",
@@ -39,14 +35,30 @@ export default function Sidebar({
   ]);
   const [dataList, setDataList] = useState([]);
   const [selectedYear, setSelectedYear] = useState(2021);
-  // const [checkedMonthList, setMonthCheckedList] = useState([]);
   const [checkedMonth, setMonthChecked] = useState(new Date().getMonth() + 1);
+  const [checkedCategory, setCheckedCategory] = useState("");
+
   const [yearList, setYearList] = useState(
     Array(new Date().getFullYear() - 2016 + 1)
       .fill()
       .map((_, idx) => 2016 + idx)
       .reverse()
   );
+  const handleCategory = (e) => {
+    const { value } = e.target;
+    setCheckedCategory(value);
+    if (value === "all") {
+      setCheckedCategoryList([value]);
+      return;
+    }
+    if (checkedCategoryList.includes(value)) {
+      let filteredArray = checkedCategoryList.filter((item) => item !== value);
+      setCheckedCategoryList(filteredArray);
+      return;
+    }
+    setCheckedCategory(value);
+    setCheckedCategoryList([...checkedCategoryList, e.target.value]);
+  };
   const handleCheckBoxMonth = (e) => {
     if (parseInt(e.target.value) === 0) {
       setMonthChecked(parseInt(e.target.value));
@@ -152,6 +164,9 @@ export default function Sidebar({
               <FormControlLabel
                 control={
                   <Checkbox
+                    value={"all"}
+                    checked={checkedCategory === "all"}
+                    onChange={handleCategory}
                     style={{
                       color: "#000",
                     }}
@@ -164,6 +179,13 @@ export default function Sidebar({
                   <FormControlLabel
                     control={
                       <Checkbox
+                        checked={
+                          checkedCategory === "all"
+                            ? true
+                            : checkedCategoryList.includes(item)
+                        }
+                        value={item}
+                        onChange={handleCategory}
                         style={{
                           color: "#000",
                         }}

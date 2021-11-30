@@ -20,8 +20,9 @@ const Home = () => {
   const [checkedMonthList, setMonthCheckedList] = useState([
     new Date().getMonth() + 1,
   ]);
+  const [checkedCategoryList, setCheckedCategoryList] = useState([]);
   const [charData, setChartData] = useState([]);
-
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
     axios
       .get("https://newerver.herokuapp.com/allNew")
@@ -87,7 +88,20 @@ const Home = () => {
     setFilterData(filteredYearData);
   }, [allData, checkedMonthList]);
 
-  console.log(charData);
+  useEffect(() => {
+    const itemList = [];
+    allData.forEach((item) => {
+      const listItem = item?.entity[0];
+      itemList.push(...Object.values(listItem));
+    });
+    setCategories([...new Set(itemList)]);
+    // const filteredYearData = allData.filter((item) => {
+    //   if (checkedCategoryList[0] === 'all') return true;
+    //   return checkedCategoryList.some((r) => listItem.includes(r));
+    // });
+    // setFilterData(filteredYearData);
+  }, [allData, checkedCategoryList]);
+
   return (
     <>
       <Topbar />
@@ -96,6 +110,10 @@ const Home = () => {
           setSelectedYearData={setSelectedYear}
           checkedMonthList={checkedMonthList}
           setMonthCheckedList={setMonthCheckedList}
+          checkedCategoryList={checkedCategoryList}
+          setCheckedCategoryList={setCheckedCategoryList}
+          categories={categories}
+          setCategories={setCategories}
         />
 
         <div className="home">

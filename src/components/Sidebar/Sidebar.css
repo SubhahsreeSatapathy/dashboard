@@ -11,12 +11,12 @@
   padding: 10px;
   color: #222;
   transition: all 0.3s ease-out;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
   position: sticky;
   top: 64px;
   bottom: 0;
+  overflow-y: scroll;
+  height:50%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sidebarMenu {
