@@ -15,7 +15,12 @@ const Footer = ({ alldata }) => {
     {
       dataField: "entity[0]",
       text: "entity",
-      formatter: (cell, row) => Object.keys(row.entity[0]),
+      formatter: (cell, row) => " " + Object.keys(row.entity[0]),
+    },
+    {
+      dataField: "entity[0]",
+      text: "entity-type",
+      formatter: (cell, row) => " " + Object.values(row.entity[0]),
     },
   ];
   return (
