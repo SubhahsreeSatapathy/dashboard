@@ -1,48 +1,46 @@
-.sidebar{
-    flex: 1;
-    height:calc(100vh-50px);
-    background-color: rgb(241, 241, 247);
-    top: 0;
-    bottom: 0;
-    position: relative;
-    width: 300px;
-    
+.sidebar {
+  flex: 1;
+  height: calc(100vh-50px);
+  background-color: rgb(241, 241, 247);
+  top: 0;
+  bottom: 0;
+  position: relative;
+  width: 300px;
 }
-.sidebarWrapper{
-    padding: 10px;
-    color:#222;
-    transition: all .3s ease-out;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    position: sticky;
-    top: 64px;
-    bottom: 0;
+.sidebarWrapper {
+  padding: 10px;
+  color: #222;
+  transition: all 0.3s ease-out;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  position: sticky;
+  top: 64px;
+  bottom: 0;
+}
 
-
-
+.sidebarMenu {
+  margin-bottom: 10px;
+  width: max-content;
+  -webkit-overflow-scrolling: touch;
 }
-.sidebarMenu{
-    margin-bottom: 10px;
-    width: max-content;
-    -webkit-overflow-scrolling: touch;
+.sidebarTitle {
+  font-size: 18px;
+  color: #333;
+  border-bottom: 2px solid #444;
 }
-.sidebarTitle{
-    font-size: 18px;
-    color: #333;
-    border-bottom: 2px solid #444;
-    
+.sidebarList {
+  list-style: none;
+  padding: 2px;
 }
-.sidebarList{
-    list-style: none;
-    padding: 2px;
+.sidebarListItem {
+  padding: 3px;
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+  border-radius: 10px;
 }
-.sidebarListItem{
-    padding: 3px;
-    cursor: pointer;
-    display: flex;
-    align-content: center;
-    border-radius: 10px;
-}
-.sidebarListItem.active, .sidebarListItem:hover{
-    background-color: rgb(224, 224, 252);
+.sidebarListItem.active,
+.sidebarListItem:hover {
+  background-color: rgb(224, 224, 252);
 }
