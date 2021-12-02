@@ -15,13 +15,19 @@ const Footer = ({ alldata }) => {
     {
       dataField: "entity[0]",
       text: "entity",
-      formatter: (cell, row) => " " + Object.keys(row.entity[0]),
+      formatter: (cell, row) => {
+        let data = ""
+        for(let item in row.entity[0]){
+          data += `${item}: ${row.entity[0][item]},  `;
+        }
+        return " " + data;
+      },
     },
-    {
-      dataField: "entity[0]",
-      text: "entity-type",
-      formatter: (cell, row) => " " + Object.values(row.entity[0]),
-    },
+    // {
+    //   dataField: "entity[0]",
+    //   text: "entity-type",
+    //   formatter: (cell, row) => " " + Object.values(row.entity[0]),
+    // },
   ];
   return (
     <>
