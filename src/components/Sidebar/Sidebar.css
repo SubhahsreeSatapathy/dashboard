@@ -15,7 +15,6 @@
   top: 64px;
   bottom: 0;
   overflow-y: scroll;
-  height: 100%;
   -webkit-overflow-scrolling: touch;
 }
 
