@@ -9,6 +9,7 @@ import {
   Radio,
   RadioGroup,
 } from "@material-ui/core";
+import { Add, AddBox, IndeterminateCheckBox } from "@material-ui/icons";
 
 export default function Sidebar({
   setSelectedYearData,
@@ -34,6 +35,9 @@ export default function Sidebar({
     "December",
   ]);
   const [dataList, setDataList] = useState([]);
+  const [categoryCollapse, setCategoryCollapse] = useState(true);
+  const [monthCollapse, setMonthCollapse] = useState(true);
+  const [yearCollapse, setYearCollapse] = useState(true);
   const [selectedYear, setSelectedYear] = useState(2021);
   const [checkedMonth, setMonthChecked] = useState(new Date().getMonth() + 1);
   const [checkedCategory, setCheckedCategory] = useState("");
@@ -86,8 +90,30 @@ export default function Sidebar({
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Year</h3>
-          <ul className="sidebarList">
+          <div
+            className={
+              "collapse-header category-header  categoryCollapse " +
+              (yearCollapse ? "active" : "inactive")
+            }
+          >
+            <h3 className="sidebarTitle">Year</h3>
+            {yearCollapse ? (
+              <AddBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setYearCollapse(!yearCollapse);
+                }}
+              />
+            ) : (
+              <IndeterminateCheckBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setYearCollapse(!yearCollapse);
+                }}
+              />
+            )}
+          </div>
+          <ul className="sidebarList category-sidebar">
             <FormControl component="fieldset">
               <RadioGroup
                 aria-label="gender"
@@ -116,8 +142,30 @@ export default function Sidebar({
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Month</h3>
-          <ul className="sidebarList">
+          <div
+            className={
+              "collapse-header category-header  categoryCollapse " +
+              (monthCollapse ? "active" : "inactive")
+            }
+          >
+            <h3 className="sidebarTitle">Month</h3>
+            {monthCollapse ? (
+              <AddBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setMonthCollapse(!monthCollapse);
+                }}
+              />
+            ) : (
+              <IndeterminateCheckBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setMonthCollapse(!monthCollapse);
+                }}
+              />
+            )}
+          </div>
+          <ul className="sidebarList category-sidebar">
             <FormGroup>
               <FormControlLabel
                 control={
@@ -158,8 +206,30 @@ export default function Sidebar({
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Category</h3>
-          <ul className="sidebarList">
+          <div
+            className={
+              "collapse-header category-header  categoryCollapse " +
+              (categoryCollapse ? "active" : "inactive")
+            }
+          >
+            <h3 className="sidebarTitle">Entity</h3>
+            {categoryCollapse ? (
+              <AddBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setCategoryCollapse(!categoryCollapse);
+                }}
+              />
+            ) : (
+              <IndeterminateCheckBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setCategoryCollapse(!categoryCollapse);
+                }}
+              />
+            )}
+          </div>
+          <ul className="sidebarList category-sidebar">
             <FormGroup>
               <FormControlLabel
                 control={
