@@ -26,7 +26,6 @@
 .sidebarTitle {
   font-size: 18px;
   color: #333;
-  border-bottom: 2px solid #444;
 }
 .sidebarList {
   list-style: none;
@@ -42,4 +41,18 @@
 .sidebarListItem.active,
 .sidebarListItem:hover {
   background-color: rgb(224, 224, 252);
+}
+
+.collapse-header {
+  display: flex;
+  border-bottom: 2px solid #444;
+  align-items: center;
+}
+
+.collapse-indicator {
+  margin-left: 40px;
+}
+
+.category-header.active ~ .category-sidebar {
+  display: none;
 }
