@@ -9,7 +9,7 @@ import {
   Radio,
   RadioGroup,
 } from "@material-ui/core";
-import { Add, AddBox, IndeterminateCheckBox } from "@material-ui/icons";
+import { AddBox, IndeterminateCheckBox } from "@material-ui/icons";
 
 export default function Sidebar({
   setSelectedYearData,
@@ -38,10 +38,27 @@ export default function Sidebar({
   const [categoryCollapse, setCategoryCollapse] = useState(true);
   const [monthCollapse, setMonthCollapse] = useState(true);
   const [yearCollapse, setYearCollapse] = useState(true);
+  const [companyCollapse, setCompanyCollapse] = useState(true);
+  const [technologyCollapse, setTechnologyCollapse] = useState(true);
+  const [partnerCollapse, setPartnerCollapse] = useState(true);
   const [selectedYear, setSelectedYear] = useState(2021);
   const [checkedMonth, setMonthChecked] = useState(new Date().getMonth() + 1);
   const [checkedCategory, setCheckedCategory] = useState("");
-
+  const [companyList, setCompanyList] = useState([
+    "Tech Mahindra",
+    "Infosys",
+    "Accenture",
+    "Wipro",
+    "TCS",
+    "Infy"
+  ]);
+  const [technology, setTechnology] = useState(["Blockchain", "AI"]);
+  const [partners, setPartners] = useState([
+    "AWS",
+    "Google",
+    "IBM",
+    "Microsoft",
+  ]);
   const [yearList, setYearList] = useState(
     Array(new Date().getFullYear() - 2016 + 1)
       .fill()
@@ -245,6 +262,195 @@ export default function Sidebar({
                 label="Select all"
               />
               {categories.map((item, index) => {
+                return (
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={
+                          checkedCategory === "all"
+                            ? true
+                            : checkedCategoryList.includes(item)
+                        }
+                        value={item}
+                        onChange={handleCategory}
+                        style={{
+                          color: "#000",
+                        }}
+                      />
+                    }
+                    label={item}
+                  />
+                );
+              })}
+            </FormGroup>
+          </ul>
+        </div>
+        <div className="sidebarMenu">
+          <div
+            className={
+              "collapse-header category-header  categoryCollapse " +
+              (companyCollapse ? "active" : "inactive")
+            }
+          >
+            <h3 className="sidebarTitle">Company</h3>
+            {companyCollapse ? (
+              <AddBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setCompanyCollapse(!companyCollapse);
+                }}
+              />
+            ) : (
+              <IndeterminateCheckBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setCompanyCollapse(!companyCollapse);
+                }}
+              />
+            )}
+          </div>
+          <ul className="sidebarList category-sidebar">
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    value={"all"}
+                    checked={checkedCategory === "all"}
+                    onChange={handleCategory}
+                    style={{
+                      color: "#000",
+                    }}
+                  />
+                }
+                label="Select all"
+              />
+              {companyList.map((item, index) => {
+                return (
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={
+                          checkedCategory === "all"
+                            ? true
+                            : checkedCategoryList.includes(item)
+                        }
+                        value={item}
+                        onChange={handleCategory}
+                        style={{
+                          color: "#000",
+                        }}
+                      />
+                    }
+                    label={item}
+                  />
+                );
+              })}
+            </FormGroup>
+          </ul>
+        </div>
+        <div className="sidebarMenu">
+          <div
+            className={
+              "collapse-header category-header  categoryCollapse " +
+              (technologyCollapse ? "active" : "inactive")
+            }
+          >
+            <h3 className="sidebarTitle">Technology</h3>
+            {technologyCollapse ? (
+              <AddBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setTechnologyCollapse(!technologyCollapse);
+                }}
+              />
+            ) : (
+              <IndeterminateCheckBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setTechnologyCollapse(!technologyCollapse);
+                }}
+              />
+            )}
+          </div>
+          <ul className="sidebarList category-sidebar">
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    value={"all"}
+                    checked={checkedCategory === "all"}
+                    onChange={handleCategory}
+                    style={{
+                      color: "#000",
+                    }}
+                  />
+                }
+                label="Select all"
+              />
+              {technology.map((item, index) => {
+                return (
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={
+                          checkedCategory === "all"
+                            ? true
+                            : checkedCategoryList.includes(item)
+                        }
+                        value={item}
+                        onChange={handleCategory}
+                        style={{
+                          color: "#000",
+                        }}
+                      />
+                    }
+                    label={item}
+                  />
+                );
+              })}
+            </FormGroup>
+          </ul>
+        </div>
+        <div className="sidebarMenu">
+          <div
+            className={
+              "collapse-header category-header  categoryCollapse " +
+              (partnerCollapse ? "active" : "inactive")
+            }
+          >
+            <h3 className="sidebarTitle">Partners</h3>
+            {partnerCollapse ? (
+              <AddBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setPartnerCollapse(!partnerCollapse);
+                }}
+              />
+            ) : (
+              <IndeterminateCheckBox
+                className="collapse-indicator"
+                onClick={() => {
+                  setPartnerCollapse(!partnerCollapse);
+                }}
+              />
+            )}
+          </div>
+          <ul className="sidebarList category-sidebar">
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    value={"all"}
+                    checked={checkedCategory === "all"}
+                    onChange={handleCategory}
+                    style={{
+                      color: "#000",
+                    }}
+                  />
+                }
+                label="Select all"
+              />
+              {partners.map((item, index) => {
                 return (
                   <FormControlLabel
                     control={
