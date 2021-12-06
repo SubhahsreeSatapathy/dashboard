@@ -18,7 +18,9 @@ export default function Sidebar({
   checkedCategoryList,
   setCheckedCategoryList,
   categories,
+
   setCategories,
+  setCompany,
 }) {
   const [monthList, setAllMonths] = useState([
     "January",
@@ -50,7 +52,7 @@ export default function Sidebar({
     "Accenture",
     "Wipro",
     "TCS",
-    "Infy"
+    "Infy",
   ]);
   const [technology, setTechnology] = useState(["Blockchain", "AI"]);
   const [partners, setPartners] = useState([
@@ -68,6 +70,7 @@ export default function Sidebar({
   const handleCategory = (e) => {
     const { value } = e.target;
     setCheckedCategory(value);
+    setCompany(value);
     if (value === "all") {
       setCheckedCategoryList([value]);
       return;
