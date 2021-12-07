@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "../../components/charts/Chart";
 import FeaturedNews from "../../components/FeaturedNews/FeaturedNews";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { monthNames } from "../../constants";
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import "./Home.css";
@@ -23,6 +23,23 @@ const Home = () => {
   const [checkedCategoryList, setCheckedCategoryList] = useState([]);
   const [charData, setChartData] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [company, setCompany] = useState();
+  const [catdata, setCatdata] = useState([]);
+  console.log(company);
+
+  useEffect(() => {
+    console.log("hi from useeffect", company);
+    axios
+      .post("https://newerver.herokuapp.com/all", {
+        myParam: company,
+      })
+      .then((response) => {
+        console.log(response?.data);
+        setCatdata([...catdata, ...response?.data]);
+      })
+      .catch((error) => console.log(error.response));
+  }, [company]);
+  console.log("hi ct", catdata);
   useEffect(() => {
     axios
       .get("https://newerver.herokuapp.com/allNew")
@@ -98,7 +115,9 @@ const Home = () => {
     const filteredYearData = allData.filter((item) => {
       const listItem = item?.entity[0];
       if (checkedCategoryList[0] === "all") return true;
-      return Object.values(listItem).some((r) => checkedCategoryList.includes(r));
+      return Object.values(listItem).some((r) =>
+        checkedCategoryList.includes(r)
+      );
     });
     setFilterData(filteredYearData);
   }, [allData, checkedCategoryList]);
@@ -115,6 +134,7 @@ const Home = () => {
           setCheckedCategoryList={setCheckedCategoryList}
           categories={categories}
           setCategories={setCategories}
+          setCompany={setCompany}
         />
 
         <div className="home">
@@ -128,7 +148,12 @@ const Home = () => {
             negative={negative}
           />
           <div className="homeWidgets">
-            <WidgetLg filteredData={filteredData} />
+            {!!company.length ? (
+              <WidgetLg filteredData={catdata} />
+            ) : (
+              <WidgetLg filteredData={filteredData} />
+            )}
+
             <WidgetSm />
           </div>
           <div className="homeFooter">
